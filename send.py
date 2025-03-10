@@ -21,8 +21,11 @@ for i, task in enumerate(tasks):
         image_file_name = f"{folder_name}/image.png"
 
         bot = telebot.TeleBot(BOT_TOKEN)
-        if os.path.exists(image_file_name):
-            bot.send_photo(chat_id=CHAT_ID, photo=open(image_file_name, 'rb'), parse_mode="Markdown")
+        if os.path.exists(image_file_name) and os.path.exists(text_file_name):
+            bot.send_photo(chat_id=CHAT_ID, photo=open(image_file_name, 'rb'), caption=open(text_file_name, 'rt', encoding='UTF-8').read(), parse_mode="Markdown")
+        else:
+            if os.path.exists(image_file_name):
+                bot.send_photo(chat_id=CHAT_ID, photo=open(image_file_name, 'rb'), parse_mode="Markdown")
 
-        if os.path.exists(text_file_name):
-            bot.send_message(chat_id=CHAT_ID, text=open(text_file_name, 'rt', encoding='UTF-8').read(), parse_mode="Markdown")
+            if os.path.exists(text_file_name):
+                bot.send_message(chat_id=CHAT_ID, text=open(text_file_name, 'rt', encoding='UTF-8').read(), parse_mode="Markdown")
