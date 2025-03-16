@@ -32,7 +32,7 @@ class Project(CommonBlogger):
 
     def __init__(self, **kwargs):
         super().__init__(
-            first_post_date=datetime(2025, 2, 19),
+            first_post_date=datetime(2025, 3, 16),
             text_generator=OpenAITextGenerator(),
             topic_word_limit=100,
             reviewer=TelegramSender(),
