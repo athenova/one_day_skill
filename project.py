@@ -3,6 +3,7 @@ from simple_blogger.generators.OpenAIGenerator import OpenAITextGenerator
 from datetime import datetime
 from simple_blogger.senders.TelegramSender import TelegramSender
 from simple_blogger.senders.InstagramSender import InstagramSender
+from simple_blogger.senders.VkSender import VkSender
 
 class Project(CommonBlogger):
     def _example_task_creator(self):
@@ -36,8 +37,9 @@ class Project(CommonBlogger):
             text_generator=OpenAITextGenerator(),
             topic_word_limit=100,
             reviewer=TelegramSender(),
-            senders=[TelegramSender(channel_id=f"@one_day_skill"), InstagramSender(channel_token_name="ONE_DAY_SKILL_TOKEN")],
+            senders=[TelegramSender(channel_id=f"@one_day_skill"), 
+                     InstagramSender(channel_token_name="ONE_DAY_SKILL_TOKEN"),
+                     VkSender(group_id='229822298')
+                     ],
             **kwargs
         )
-
-    
